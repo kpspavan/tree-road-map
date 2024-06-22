@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import ReactFlow, {
   useNodesState,
   useEdgesState,
@@ -7,8 +7,11 @@ import ReactFlow, {
   Background,
   MiniMap,
   Handle,
+  MarkerType,
 } from "reactflow";
+import { Drawer, Button } from "antd";
 import "reactflow/dist/style.css";
+import "./App.css"; // Import custom CSS file
 
 const nodeStyle = {
   background: "#fff",
@@ -74,20 +77,24 @@ const initialNodes = [
   {
     id: "8",
     data: { label: "Internet Topic 1\nInternet Topic 2" },
-    position: { x: -400, y: -300 },
+    position: { x: -500, y: -300 },
     type: "custom",
     style: { ...nodeStyle, width: "200px" },
   },
+
   {
     id: "9",
-    data: { label: "HTML Topic 1\nHTML Topic 2\nHTML Topic 3\nHTML Topic 4" },
-    position: { x: 700, y: -130 },
+    data: {
+      label:
+        "HTML Basics\nHTML Basic Elements\nHTML Attributes\nHTML Lists\nHTML Input Field and Forms\nHTML Tables\nHTML Media",
+    },
+    position: { x: 700, y: -200 },
     type: "custom",
     style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "10",
-    data: { label: "CSS Topic 1\nCSS Topic 2\nCSS Topic 3\nCSS Topic 4" },
+    data: { label: "CSS Basics\nCSS Selectors\nCSS Properties\nCSS Designing" },
     position: { x: -600, y: 50 },
     type: "custom",
     style: { ...nodeStyle, width: "200px" },
@@ -135,7 +142,7 @@ const initialEdges = [
     target: "2",
     type: "bezier",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
   },
   {
     id: "e2-3",
@@ -143,7 +150,7 @@ const initialEdges = [
     target: "3",
     type: "bezier",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
   },
   {
     id: "e3-4",
@@ -151,7 +158,7 @@ const initialEdges = [
     target: "4",
     type: "bezier",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
   },
   {
     id: "e4-5",
@@ -159,7 +166,7 @@ const initialEdges = [
     target: "5",
     type: "bezier",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
   },
   {
     id: "e5-6",
@@ -167,7 +174,7 @@ const initialEdges = [
     target: "6",
     type: "bezier",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
   },
   {
     id: "e6-7",
@@ -175,15 +182,30 @@ const initialEdges = [
     target: "7",
     type: "bezier",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
   },
+  // {
+  // id: "1",
+  // data: { label: "Internet Fundamentals" },
+  // position: { x: 0, y: -300 },
+  // type: "custom",
+  // style: nodeStyle,
+  // },
+  // {
+  // id: "2",
+  // data: { label: "HTML" },
+  // position: { x: 200, y: -100 },
+  // type: "custom",
+  // style: nodeStyle,
+  // },
   {
     id: "e1-8",
-    source: "8",
-    target: "1",
+    source: "1",
+    target: "8",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
+    markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
   {
     id: "e2-9",
@@ -191,7 +213,8 @@ const initialEdges = [
     target: "9",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "red" },
+    markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
   {
     id: "e3-10",
@@ -199,7 +222,8 @@ const initialEdges = [
     target: "10",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
+    markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
   {
     id: "e4-11",
@@ -207,7 +231,8 @@ const initialEdges = [
     target: "11",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "red" },
+    markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
   {
     id: "e5-12",
@@ -215,7 +240,8 @@ const initialEdges = [
     target: "12",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
+    markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
   {
     id: "e6-13",
@@ -223,7 +249,8 @@ const initialEdges = [
     target: "13",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "red" },
+    markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
   {
     id: "e7-14",
@@ -231,19 +258,26 @@ const initialEdges = [
     target: "14",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 2, stroke: "#007bff" },
+    style: { strokeWidth: 3, stroke: "#000000" },
+    markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
 ];
 
 const CustomNode = ({ data, style }) => (
-  <div style={style}>
+  <div
+    style={style}
+    className="custom-node"
+    onClick={() => data.onClick(data.label)}
+  >
     <Handle
       type="source"
       position="right"
       style={{ background: "transparent", border: "none" }}
     />
     {data.label.split("\n").map((line, index) => (
-      <div key={index}>{line}</div>
+      <div key={index} className="node-line">
+        {line}
+      </div>
     ))}
     <Handle
       type="target"
@@ -260,10 +294,25 @@ const nodeTypes = {
 const App = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [drawerContent, setDrawerContent] = useState("");
+
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+    (params) =>
+      setEdges((eds) =>
+        addEdge({ ...params, markerEnd: { type: MarkerType.ArrowClosed } }, eds)
+      ),
     [setEdges]
   );
+
+  const handleNodeClick = (label) => {
+    setDrawerContent(label);
+    setDrawerVisible(true);
+  };
+
+  const onClose = () => {
+    setDrawerVisible(false);
+  };
 
   return (
     <div
@@ -276,7 +325,10 @@ const App = () => {
       }}
     >
       <ReactFlow
-        nodes={nodes}
+        nodes={nodes.map((node) => ({
+          ...node,
+          data: { ...node.data, onClick: handleNodeClick },
+        }))}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
@@ -294,6 +346,17 @@ const App = () => {
         <MiniMap />
         <Background />
       </ReactFlow>
+      <Drawer
+        title="Node Details"
+        placement="right"
+        closable={true}
+        onClose={onClose}
+        visible={drawerVisible}
+        mask={false}
+        maskClosable={false}
+      >
+        <p>{drawerContent}</p>
+      </Drawer>
     </div>
   );
 };
