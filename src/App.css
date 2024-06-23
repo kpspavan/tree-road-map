@@ -18,3 +18,27 @@
   background-color: #f0f8ff;
   border-color: #0056b3;
 }
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated-arrow {
+  stroke-dasharray: 5;
+  stroke-dashoffset: 5;
+  animation: dash 1s linear infinite;
+}
+
+@keyframes arrow-move {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.edge-path {
+  stroke-dasharray: 10;
+  stroke-dashoffset: 0;
+  animation: arrow-move 1s linear infinite;
+}
+

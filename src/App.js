@@ -9,7 +9,7 @@ import ReactFlow, {
   Handle,
   MarkerType,
 } from "reactflow";
-import { Drawer, Button } from "antd";
+import { Drawer } from "antd";
 import "reactflow/dist/style.css";
 import "./App.css"; // Import custom CSS file
 
@@ -28,89 +28,88 @@ const initialNodes = [
   {
     id: "1",
     data: { label: "Internet Fundamentals" },
-    position: { x: 0, y: -300 },
-    type: "custom",
+    position: { x: 100, y: 0 },
+    type: "main",
     style: nodeStyle,
   },
   {
     id: "2",
     data: { label: "HTML" },
-    position: { x: 200, y: -100 },
-    type: "custom",
+    position: { x: 100, y: 150 },
+    type: "main",
     style: nodeStyle,
   },
   {
     id: "3",
     data: { label: "CSS" },
-    position: { x: -200, y: 50 },
-    type: "custom",
+    position: { x: 100, y: 300 },
+    type: "main",
     style: nodeStyle,
   },
   {
     id: "4",
     data: { label: "JavaScript" },
-    position: { x: 200, y: 200 },
-    type: "custom",
+    position: { x: 100, y: 450 },
+    type: "main",
     style: nodeStyle,
   },
   {
     id: "5",
     data: { label: "Git" },
-    position: { x: -200, y: 350 },
-    type: "custom",
+    position: { x: 100, y: 600 },
+    type: "main",
     style: nodeStyle,
   },
   {
     id: "6",
     data: { label: "React" },
-    position: { x: 200, y: 500 },
-    type: "custom",
+    position: { x: 100, y: 750 },
+    type: "main",
     style: nodeStyle,
   },
   {
     id: "7",
     data: { label: "Next.js" },
-    position: { x: 0, y: 700 },
-    type: "custom",
+    position: { x: 100, y: 900 },
+    type: "main",
     style: nodeStyle,
   },
   {
     id: "8",
     data: { label: "Internet Topic 1\nInternet Topic 2" },
-    position: { x: -500, y: -300 },
-    type: "custom",
+    position: { x: -300, y: 0 },
+    type: "left",
     style: { ...nodeStyle, width: "200px" },
   },
-
   {
     id: "9",
     data: {
       label:
         "HTML Basics\nHTML Basic Elements\nHTML Attributes\nHTML Lists\nHTML Input Field and Forms\nHTML Tables\nHTML Media",
     },
-    position: { x: 700, y: -200 },
-    type: "custom",
+    position: { x: 500, y: 150 },
+    type: "right",
     style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "10",
     data: { label: "CSS Basics\nCSS Selectors\nCSS Properties\nCSS Designing" },
-    position: { x: -600, y: 50 },
-    type: "custom",
+    position: { x: -300, y: 300 },
+    type: "left",
     style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "11",
     data: { label: "JS Topic 1\nJS Topic 2\nJS Topic 3\nJS Topic 4" },
-    position: { x: 700, y: 150 },
-    type: "custom",
+    position: { x: 500, y: 450 },
+    type: "right",
     style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "12",
     data: { label: "Git Topic 1\nGit Topic 2\nGit Topic 3" },
-    position: { x: -600, y: 350 },
-    type: "custom",
+    position: { x: -300, y: 600 },
+    type: "left",
     style: { ...nodeStyle, width: "200px" },
   },
   {
@@ -119,8 +118,8 @@ const initialNodes = [
       label:
         "React Topic 1\nReact Topic 2\nReact Topic 3\nReact Topic 4\nReact Topic 5",
     },
-    position: { x: 700, y: 450 },
-    type: "custom",
+    position: { x: 500, y: 750 },
+    type: "right",
     style: { ...nodeStyle, width: "200px" },
   },
   {
@@ -129,8 +128,8 @@ const initialNodes = [
       label:
         "Next.js Topic 1\nNext.js Topic 2\nNext.js Topic 3\nNext.js Topic 4",
     },
-    position: { x: -600, y: 700 },
-    type: "custom",
+    position: { x: 500, y: 900 },
+    type: "right",
     style: { ...nodeStyle, width: "200px" },
   },
 ];
@@ -140,7 +139,7 @@ const initialEdges = [
     id: "e1-2",
     source: "1",
     target: "2",
-    type: "bezier",
+    type: "smoothstep",
     animated: true,
     style: { strokeWidth: 3, stroke: "#000000" },
   },
@@ -148,7 +147,7 @@ const initialEdges = [
     id: "e2-3",
     source: "2",
     target: "3",
-    type: "bezier",
+    type: "smoothstep",
     animated: true,
     style: { strokeWidth: 3, stroke: "#000000" },
   },
@@ -156,7 +155,7 @@ const initialEdges = [
     id: "e3-4",
     source: "3",
     target: "4",
-    type: "bezier",
+    type: "smoothstep",
     animated: true,
     style: { strokeWidth: 3, stroke: "#000000" },
   },
@@ -164,7 +163,7 @@ const initialEdges = [
     id: "e4-5",
     source: "4",
     target: "5",
-    type: "bezier",
+    type: "smoothstep",
     animated: true,
     style: { strokeWidth: 3, stroke: "#000000" },
   },
@@ -172,7 +171,7 @@ const initialEdges = [
     id: "e5-6",
     source: "5",
     target: "6",
-    type: "bezier",
+    type: "smoothstep",
     animated: true,
     style: { strokeWidth: 3, stroke: "#000000" },
   },
@@ -180,24 +179,10 @@ const initialEdges = [
     id: "e6-7",
     source: "6",
     target: "7",
-    type: "bezier",
+    type: "smoothstep",
     animated: true,
     style: { strokeWidth: 3, stroke: "#000000" },
   },
-  // {
-  // id: "1",
-  // data: { label: "Internet Fundamentals" },
-  // position: { x: 0, y: -300 },
-  // type: "custom",
-  // style: nodeStyle,
-  // },
-  // {
-  // id: "2",
-  // data: { label: "HTML" },
-  // position: { x: 200, y: -100 },
-  // type: "custom",
-  // style: nodeStyle,
-  // },
   {
     id: "e1-8",
     source: "1",
@@ -213,7 +198,7 @@ const initialEdges = [
     target: "9",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 3, stroke: "red" },
+    style: { strokeWidth: 3, stroke: "#000000" },
     markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
   {
@@ -231,7 +216,7 @@ const initialEdges = [
     target: "11",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 3, stroke: "red" },
+    style: { strokeWidth: 3, stroke: "#000000" },
     markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
   {
@@ -249,7 +234,7 @@ const initialEdges = [
     target: "13",
     type: "straight",
     animated: true,
-    style: { strokeWidth: 3, stroke: "red" },
+    style: { strokeWidth: 3, stroke: "#000000" },
     markerEnd: { type: MarkerType.ArrowClosed, color: "#007bff" },
   },
   {
@@ -263,16 +248,22 @@ const initialEdges = [
   },
 ];
 
-const CustomNode = ({ data, style }) => (
+const LeftCustomNode = ({ data, style }) => (
   <div
     style={style}
     className="custom-node"
     onClick={() => data.onClick(data.label)}
   >
     <Handle
-      type="source"
-      position="right"
-      style={{ background: "transparent", border: "none" }}
+      type="target"
+      position="left"
+      style={{
+        background: "transparent",
+        border: "none",
+        left: "200px",
+        zIndex: 10,
+      }}
+      className="react-flow__handle-left"
     />
     {data.label.split("\n").map((line, index) => (
       <div key={index} className="node-line">
@@ -280,15 +271,70 @@ const CustomNode = ({ data, style }) => (
       </div>
     ))}
     <Handle
+      type="source"
+      position="right"
+      style={{ background: "transparent", border: "none", right: "10px" }}
+      className="react-flow__handle-right"
+    />
+  </div>
+);
+
+const RightCustomNode = ({ data, style }) => (
+  <div
+    style={style}
+    className="custom-node"
+    onClick={() => data.onClick(data.label)}
+  >
+    <Handle
       type="target"
       position="left"
-      style={{ background: "transparent", border: "none" }}
+      style={{ background: "transparent", border: "none", left: "-8px" }}
+      className="react-flow__handle-left"
+    />
+    {data.label.split("\n").map((line, index) => (
+      <div key={index} className="node-line">
+        {line}
+      </div>
+    ))}
+    <Handle
+      type="source"
+      position="right"
+      style={{ background: "transparent", border: "none", right: "-8px" }}
+      className="react-flow__handle-right"
+    />
+  </div>
+);
+
+const MainCustomNode = ({ data, style }) => (
+  <div
+    style={style}
+    className="custom-node"
+    onClick={() => data.onClick(data.label)}
+  >
+    <Handle
+      type="target"
+      position="left"
+      style={{ background: "transparent", border: "none", left: "-8px" }}
+      className="react-flow__handle-left"
+    />
+    {data.label.split("\n").map((line, index) => (
+      <div key={index} className="node-line">
+        {line}
+      </div>
+    ))}
+    <Handle
+      type="source"
+      position="right"
+      style={{ background: "transparent", border: "none", right: "8px" }}
+      className="react-flow__handle-right"
     />
   </div>
 );
 
 const nodeTypes = {
-  custom: CustomNode,
+  left: LeftCustomNode,
+  right: RightCustomNode,
+  main: MainCustomNode,
 };
 
 const App = () => {
