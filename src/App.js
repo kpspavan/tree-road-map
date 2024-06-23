@@ -9,9 +9,11 @@ import ReactFlow, {
   Handle,
   MarkerType,
 } from "reactflow";
-import { Drawer } from "antd";
+import { Drawer, Collapse } from "antd";
 import "reactflow/dist/style.css";
 import "./App.css"; // Import custom CSS file
+
+const { Panel } = Collapse;
 
 const nodeStyle = {
   background: "#fff",
@@ -74,6 +76,9 @@ const initialNodes = [
     type: "main",
     style: nodeStyle,
   },
+];
+
+const subTopicNodes = [
   {
     id: "8",
     data: { label: "Internet Topic 1\nInternet Topic 2" },
@@ -128,8 +133,8 @@ const initialNodes = [
       label:
         "Next.js Topic 1\nNext.js Topic 2\nNext.js Topic 3\nNext.js Topic 4",
     },
-    position: { x: 500, y: 900 },
-    type: "right",
+    position: { x: -300, y: 900 },
+    type: "left",
     style: { ...nodeStyle, width: "200px" },
   },
 ];
@@ -337,8 +342,40 @@ const nodeTypes = {
   main: MainCustomNode,
 };
 
+const topicSubtopicsMap = {
+  "Internet Fundamentals": ["Internet Topic 1", "Internet Topic 2"],
+  HTML: [
+    "HTML Basics",
+    "HTML Basic Elements",
+    "HTML Attributes",
+    "HTML Lists",
+    "HTML Input Field and Forms",
+    "HTML Tables",
+    "HTML Media",
+  ],
+  CSS: ["CSS Basics", "CSS Selectors", "CSS Properties", "CSS Designing"],
+  JavaScript: ["JS Topic 1", "JS Topic 2", "JS Topic 3", "JS Topic 4"],
+  Git: ["Git Topic 1", "Git Topic 2", "Git Topic 3"],
+  React: [
+    "React Topic 1",
+    "React Topic 2",
+    "React Topic 3",
+    "React Topic 4",
+    "React Topic 5",
+  ],
+  "Next.js": [
+    "Next.js Topic 1",
+    "Next.js Topic 2",
+    "Next.js Topic 3",
+    "Next.js Topic 4",
+  ],
+};
+
 const App = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [nodes, setNodes, onNodesChange] = useNodesState([
+    ...initialNodes,
+    ...subTopicNodes,
+  ]);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [drawerContent, setDrawerContent] = useState("");
@@ -388,8 +425,6 @@ const App = () => {
         panOnScrollMode="vertical"
         elementsSelectable={false}
       >
-        <Controls />
-        <MiniMap />
         <Background />
       </ReactFlow>
       <Drawer
@@ -401,7 +436,13 @@ const App = () => {
         mask={false}
         maskClosable={false}
       >
-        <p>{drawerContent}</p>
+        <Collapse>
+          {topicSubtopicsMap[drawerContent]?.map((subtopic, index) => (
+            <Panel header={subtopic} key={index}>
+              <p>{subtopic} details...</p>
+            </Panel>
+          ))}
+        </Collapse>
       </Drawer>
     </div>
   );
