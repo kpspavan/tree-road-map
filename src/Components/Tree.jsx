@@ -70,73 +70,99 @@ const initialNodes = [
   },
   {
     id: "7",
-    data: { label: "Next.js" },
+    data: { label: "Nextjs" },
     position: { x: 100, y: 900 },
     type: "main",
     style: nodeStyle,
   },
 ];
 
-const subTopicNodes = [
+const topics = [
   {
     id: "8",
-    data: { label: "Internet Topic 1\nInternet Topic 2" },
+    subtopics: ["Internet Topic 1", "Internet Topic 2"],
     position: { x: -300, y: 0 },
     type: "left",
-    style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "9",
-    data: {
-      label:
-        "HTML Basics\nHTML Basic Elements\nHTML Attributes\nHTML Lists\nHTML Input Field and Forms\nHTML Tables\nHTML Media",
-    },
+    subtopics: [
+      "HTML Basics",
+      "HTML Basic Elements",
+      "HTML Attributes",
+      "HTML Lists",
+      "HTML Input Field and Forms",
+      "HTML Tables",
+      "HTML Media",
+    ],
     position: { x: 500, y: 150 },
     type: "right",
-    style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "10",
-    data: { label: "CSS Basics\nCSS Selectors\nCSS Properties\nCSS Designing" },
+    subtopics: [
+      "CSS Basics",
+      "CSS Selectors",
+      "CSS Properties",
+      "CSS Designing",
+    ],
     position: { x: -300, y: 300 },
     type: "left",
-    style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "11",
-    data: { label: "JS Topic 1\nJS Topic 2\nJS Topic 3\nJS Topic 4" },
+    subtopics: [
+      "JavaScript Basics",
+      "JavaScript Statements",
+      "JavaScript Operators",
+      "JavaScript Built-in Objects",
+    ],
     position: { x: 500, y: 450 },
     type: "right",
-    style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "12",
-    data: { label: "Git Topic 1\nGit Topic 2\nGit Topic 3" },
+    subtopics: [
+      "Intro & Installation",
+      "Fundamental Operations",
+      "Syncing Techniques",
+      "Branching & Merging",
+    ],
     position: { x: -300, y: 600 },
     type: "left",
-    style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "13",
-    data: {
-      label:
-        "React Topic 1\nReact Topic 2\nReact Topic 3\nReact Topic 4\nReact Topic 5",
-    },
+    subtopics: [
+      "React Basics",
+      "React Class component",
+      "React Functional components",
+      "React Hooks",
+      "React State management",
+    ],
     position: { x: 500, y: 750 },
     type: "right",
-    style: { ...nodeStyle, width: "200px" },
   },
   {
     id: "14",
-    data: {
-      label:
-        "Next.js Topic 1\nNext.js Topic 2\nNext.js Topic 3\nNext.js Topic 4",
-    },
+    subtopics: [
+      "Next.js Basics",
+      "Next.js Routing",
+      "Next.js Data Fetching",
+      "Next.js Rendering",
+    ],
     position: { x: -300, y: 900 },
     type: "left",
-    style: { ...nodeStyle, width: "200px" },
   },
 ];
+
+const subTopicNodes = topics.map((topic) => ({
+  id: topic.id,
+  data: { label: topic.subtopics.join("\n") },
+  position: topic.position,
+  type: topic.type,
+  style: { ...nodeStyle, width: "200px" },
+}));
 
 const initialEdges = [
   {
@@ -342,32 +368,216 @@ const nodeTypes = {
 };
 
 const topicSubtopicsMap = {
-  "Internet Fundamentals": ["Internet Topic 1", "Internet Topic 2"],
-  HTML: [
-    "HTML Basics",
-    "HTML Basic Elements",
-    "HTML Attributes",
-    "HTML Lists",
-    "HTML Input Field and Forms",
-    "HTML Tables",
-    "HTML Media",
-  ],
-  CSS: ["CSS Basics", "CSS Selectors", "CSS Properties", "CSS Designing"],
-  JavaScript: ["JS Topic 1", "JS Topic 2", "JS Topic 3", "JS Topic 4"],
-  Git: ["Git Topic 1", "Git Topic 2", "Git Topic 3"],
-  React: [
-    "React Topic 1",
-    "React Topic 2",
-    "React Topic 3",
-    "React Topic 4",
-    "React Topic 5",
-  ],
-  "Next.js": [
-    "Next.js Topic 1",
-    "Next.js Topic 2",
-    "Next.js Topic 3",
-    "Next.js Topic 4",
-  ],
+  "Internet Fundamentals": {
+    subtopics: [
+      { title: "Internet Topic 1", details: ["Detail 1", "Detail 2"] },
+      { title: "Internet Topic 2", details: ["Detail 1", "Detail 2"] },
+    ],
+  },
+  HTML: {
+    subtopics: [
+      {
+        title: "HTML Basics",
+        details: [
+          "HTML Introduction",
+          "HTML Basics",
+          "HTML Layout",
+          "HTML Editors",
+          "HTML Comments",
+        ],
+      },
+      {
+        title: "HTML Basic Elements",
+        details: [
+          "HTML Headings",
+          "HTML Paragraphs",
+          "HTML Style Tag",
+          "HTML Text Formatting  Elements",
+          "HTML Color Styles and HSL",
+          "HTML <hr> Tag",
+          "HTML <br> Tag",
+          "HTML Block and Inline Elements",
+          "HTML Links Hyperlinks",
+          "HTML Images",
+          "HTML Iframes",
+        ],
+      },
+      {
+        title: "HTML Attributes",
+        details: [
+          "HTML Class Attribute",
+          "HTML Id Attribute",
+          "HTML title Attribute",
+          "HTML style attribute",
+          "HTML height Attribute",
+          "HTML src attribute",
+          "HTML alt attribute",
+        ],
+      },
+      {
+        title: "HTML Lists",
+        details: [
+          "HTML <ol> Tag",
+          "HTML <ul> Tag",
+          "Explain Description Lists in HTML",
+          "Unordered, Ordered, and Description Lists in HTML",
+        ],
+      },
+      {
+        title: "HTML Input Field and Forms",
+        details: [
+          "HTML input Tag",
+          "HTML form Tag",
+          "HTML form Attribute",
+          "HTML Forms",
+        ],
+      },
+      {
+        title: "HTML Tables",
+        details: [
+          "HTML Tables",
+          "HTML thead Tag",
+          "HTML tbody Tag",
+          "HTML  <td> Tag",
+          "HTML tr Tag",
+        ],
+      },
+      {
+        title: "HTML Media",
+        details: ["HTML media attribute", "HTML Video"],
+      },
+    ],
+  },
+  CSS: {
+    subtopics: [
+      {
+        title: "CSS Basics",
+        details: [
+          "CSS Introduction",
+          "CSS Syntax",
+          "Types of CSS (Cascading Style Sheet)",
+          "CSS Comments",
+        ],
+      },
+      {
+        title: "CSS Selectors",
+        details: [
+          "CSS #id Selector",
+          "CSS Class Selector",
+          "CSS * Selector",
+          "CSS Attribute Selector",
+          "CSS Pseudo-classes",
+          "CSS element Selector",
+        ],
+      },
+      {
+        title: "CSS Properties",
+        details: [
+          "CSS Colors",
+          "CSS Background",
+          "CSS Borders",
+          "CSS Margins",
+          "CSS Fonts",
+          "CSS Cursor Property",
+          "CSS Combinators",
+          "CSS Pseudo Elements",
+          "CSS Float",
+          "CSS Image Sprites",
+          "CSS Units",
+          "CSS z-index Property",
+        ],
+      },
+      {
+        title: "CSS Designing",
+        details: ["CSS Grid ", "CSS FLEX BOX", "CSS Box model"],
+      },
+    ],
+  },
+  JavaScript: {
+    subtopics: [
+      {
+        title: "JavaScript Basics",
+        details: ["Details about JavaScript Basics..."],
+      },
+      {
+        title: "JavaScript Statements",
+        details: ["Details about JavaScript Statements..."],
+      },
+      {
+        title: "JavaScript Operators",
+        details: ["Details about JavaScript Operators..."],
+      },
+      {
+        title: "JavaScript Built-in Objects",
+        details: ["Details about JavaScript Built-in Objects..."],
+      },
+    ],
+  },
+  Git: {
+    subtopics: [
+      {
+        title: "Intro & Installation",
+        details: ["What is Version Control?", "What is Git?", "Install Git"],
+      },
+      {
+        title: "Fundamental Operations",
+        details: [
+          "Core Terminology",
+          "Creating Repositories",
+          "Tracking Files",
+          "The Commit Workflow",
+        ],
+      },
+      {
+        title: "Syncing Techniques",
+        details: ["Cloning", "Pushing", "Fetching", "Pulling"],
+      },
+      {
+        title: "Branching & Merging",
+        details: [
+          "Branch Theory",
+          "Creating and Switching Branches",
+          "Merging Branches",
+          "Resolving Merge Conflicts",
+        ],
+      },
+    ],
+  },
+  React: {
+    subtopics: [
+      { title: "React Basics", details: ["Details about React Basics..."] },
+      {
+        title: "React Class component",
+        details: ["Details about React Class component..."],
+      },
+      {
+        title: "React Functional components",
+        details: ["Details about React Functional components..."],
+      },
+      { title: "React Hooks", details: ["Details about React Hooks..."] },
+      {
+        title: "React State management",
+        details: ["Details about React State management..."],
+      },
+    ],
+  },
+  Nextjs: {
+    subtopics: [
+      { title: "Next.js Basics", details: ["Details about Next.js Basics..."] },
+      {
+        title: "Next.js Routing",
+        details: ["Details about Next.js Routing..."],
+      },
+      {
+        title: "Next.js Data Fetching",
+        details: ["Details about Next.js Data Fetching..."],
+      },
+      {
+        title: "Next.js Rendering",
+        details: ["Details about Next.js Rendering..."],
+      },
+    ],
+  },
 };
 
 const Tree = () => {
@@ -378,6 +588,8 @@ const Tree = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [drawerContent, setDrawerContent] = useState("");
+  const [selectedSubtopic, setSelectedSubtopic] = useState("");
+  const [selectedSubtopicDetails, setSelectedSubtopicDetails] = useState([]);
 
   const onConnect = useCallback(
     (params) =>
@@ -394,6 +606,8 @@ const Tree = () => {
 
   const onClose = () => {
     setDrawerVisible(false);
+    setSelectedSubtopic("");
+    setSelectedSubtopicDetails([]);
   };
 
   return (
@@ -436,11 +650,15 @@ const Tree = () => {
         maskClosable={false}
       >
         <Collapse>
-          {topicSubtopicsMap[drawerContent]?.map((subtopic, index) => (
-            <Panel header={subtopic} key={index}>
-              <p>{subtopic} details...</p>
-            </Panel>
-          ))}
+          {topicSubtopicsMap[drawerContent]?.subtopics.map(
+            (subtopic, index) => (
+              <Panel header={subtopic.title} key={index}>
+                {subtopic.details.map((detail, idx) => (
+                  <p key={idx}>{detail}</p>
+                ))}
+              </Panel>
+            )
+          )}
         </Collapse>
       </Drawer>
     </div>
