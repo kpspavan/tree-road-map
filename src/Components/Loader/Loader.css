@@ -1,31 +1,58 @@
-.wave-container {
+.HomePage {
+  background-color: black;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  height: 100vh;
+  flex-direction: column;
+  transition: transform 1s ease-in-out;
 }
 
-.wave {
-  width: 300px; /* Adjust width as needed */
-  height: 150px; /* Adjust height as needed */
-  overflow: hidden;
+.progress-container {
+  width: 80%;
+  height: 5px;
+  background-color: #333;
+  margin-bottom: 20px;
+  position: relative;
 }
 
-.wave-svg {
-  width: 100%;
+.progress-bar {
   height: 100%;
+  background-color: red;
+  transition: width 0.1s linear;
 }
 
-.wave-path {
-  animation: waveAnimation 10s infinite linear;
+.time-display {
+  color: white;
+  margin-top: 10px;
+  font-size: 18px;
 }
 
-@keyframes waveAnimation {
-  0% {
-    transform: translateY(0);
+.welcome-text {
+  color: white;
+  position: relative;
+  top: -30px;
+  animation: fadeIn 1s forwards, moveUp 1s forwards 1s;
+}
+
+@keyframes moveUp {
+  from {
+    top: -30px;
   }
-  100% {
-    transform: translateY(-100%);
+  to {
+    top: -60px;
   }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.move-up {
+  transform: translateY(-100vh);
 }

@@ -1,0 +1,22 @@
+.animated-icon {
+    transition: transform 0.1s ease;
+  }
+  
+  .animated-icon.collapsed {
+    transform: rotate(0deg);
+  }
+  
+  .animated-icon.expanded {
+    transform: rotate(45deg);
+  }
+  
+  .subtopic-item {
+    padding: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .subtopic-item:hover {
+    background-color: #e6f7ff;
+    cursor: pointer;
+  }
+  

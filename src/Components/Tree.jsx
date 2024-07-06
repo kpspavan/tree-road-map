@@ -10,7 +10,9 @@ import ReactFlow, {
   MarkerType,
 } from "reactflow";
 import { Drawer, Collapse } from "antd";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import "reactflow/dist/style.css";
+import "./Tree.css";
 
 const { Panel } = Collapse;
 
@@ -23,6 +25,20 @@ const nodeStyle = {
   width: "250px",
   fontSize: "16px",
   boxShadow: "0 5px 10px rgba(0, 0, 0, 0.15)",
+};
+
+const animatedIconStyle = {
+  transition: "transform 0.3s",
+};
+
+const collapsedIconStyle = {
+  ...animatedIconStyle,
+  transform: "rotate(0deg)",
+};
+
+const expandedIconStyle = {
+  ...animatedIconStyle,
+  transform: "rotate(180deg)",
 };
 
 const initialNodes = [
@@ -610,6 +626,16 @@ const Tree = () => {
     setSelectedSubtopicDetails([]);
   };
 
+  const renderExpandIcon = ({ isActive }) => (
+    <span className={`animated-icon ${isActive ? "expanded" : "collapsed"}`}>
+      {isActive ? (
+        <MinusOutlined style={{ fontSize: "16px" }} />
+      ) : (
+        <PlusOutlined style={{ fontSize: "16px" }} />
+      )}
+    </span>
+  );
+
   return (
     <div
       style={{
@@ -648,13 +674,30 @@ const Tree = () => {
         visible={drawerVisible}
         mask={false}
         maskClosable={false}
+        width={400}
       >
-        <Collapse>
+        <Collapse
+          bordered={false}
+          expandIcon={renderExpandIcon}
+          expandIconPosition="right"
+          style={{ background: "#f7f7f7", borderRadius: "5px" }}
+        >
           {topicSubtopicsMap[drawerContent]?.subtopics.map(
             (subtopic, index) => (
-              <Panel header={subtopic.title} key={index}>
+              <Panel
+                header={subtopic.title}
+                key={index}
+                style={{
+                  background: "#fff",
+                  marginBottom: "10px",
+                  borderRadius: "5px",
+                  border: "1px solid #e8e8e8",
+                }}
+              >
                 {subtopic.details.map((detail, idx) => (
-                  <p key={idx}>{detail}</p>
+                  <p key={idx} className="subtopic-item">
+                    {detail}
+                  </p>
                 ))}
               </Panel>
             )
