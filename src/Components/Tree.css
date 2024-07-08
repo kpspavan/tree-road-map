@@ -1,22 +1,78 @@
+.custom-scrollbar {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #007bff #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 10px;
+  border: 3px solid #f1f1f1;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #0056b3;
+  border: 3px solid #e0e0e0;
+}
+
+.drawer-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  padding: 16px;
+  background-color: #007bff;
+  border-bottom: 1px solid #e8e8e8;
+  border-radius: 10px 10px 0 0;
+}
+
+.panel-header {
+  font-size: 18px;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.panel-content {
+  font-size: 16px;
+  color: #555;
+  padding: 8px 16px;
+}
+
+.panel-content p {
+  margin: 0;
+  padding: 8px 0;
+}
+
+.subtopic-item {
+  margin-bottom: 8px;
+  padding: 10px;
+  background-color: #e6f7ff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subtopic-item:hover {
+  background-color: #bae7ff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
 .animated-icon {
-    transition: transform 0.1s ease;
-  }
-  
-  .animated-icon.collapsed {
-    transform: rotate(0deg);
-  }
-  
-  .animated-icon.expanded {
-    transform: rotate(45deg);
-  }
-  
-  .subtopic-item {
-    padding: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .subtopic-item:hover {
-    background-color: #e6f7ff;
-    cursor: pointer;
-  }
-  
+  transition: transform 0.3s ease;
+}
+
+.expanded {
+  transform: rotate(180deg);
+}
+
+.collapsed {
+  transform: rotate(0deg);
+}

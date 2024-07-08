@@ -675,34 +675,37 @@ const Tree = () => {
         mask={false}
         maskClosable={false}
         width={400}
+        bodyStyle={{ padding: "0" }}
       >
-        <Collapse
-          bordered={false}
-          expandIcon={renderExpandIcon}
-          expandIconPosition="right"
-          style={{ background: "#f7f7f7", borderRadius: "5px" }}
-        >
-          {topicSubtopicsMap[drawerContent]?.subtopics.map(
-            (subtopic, index) => (
-              <Panel
-                header={subtopic.title}
-                key={index}
-                style={{
-                  background: "#fff",
-                  marginBottom: "10px",
-                  borderRadius: "5px",
-                  border: "1px solid #e8e8e8",
-                }}
-              >
-                {subtopic.details.map((detail, idx) => (
-                  <p key={idx} className="subtopic-item">
-                    {detail}
-                  </p>
-                ))}
-              </Panel>
-            )
-          )}
-        </Collapse>
+        <div className="custom-scrollbar" style={{ height: "100%" }}>
+          <Collapse
+            bordered={false}
+            expandIcon={renderExpandIcon}
+            expandIconPosition="right"
+            style={{ background: "#f7f7f7", borderRadius: "5px" }}
+          >
+            {topicSubtopicsMap[drawerContent]?.subtopics.map(
+              (subtopic, index) => (
+                <Panel
+                  header={subtopic.title}
+                  key={index}
+                  style={{
+                    background: "#fff",
+                    marginBottom: "10px",
+                    borderRadius: "5px",
+                    border: "1px solid #e8e8e8",
+                  }}
+                >
+                  {subtopic.details.map((detail, idx) => (
+                    <p key={idx} className="subtopic-item">
+                      {detail}
+                    </p>
+                  ))}
+                </Panel>
+              )
+            )}
+          </Collapse>
+        </div>
       </Drawer>
     </div>
   );
