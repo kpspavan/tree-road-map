@@ -33,7 +33,6 @@ const App = () => {
       {loading && <Loader />}
       {!loading && (
         <Layout style={{ minHeight: "100vh" }}>
-          {/* <Navbar /> */}
           <Layout>
             <Routes>
               <Route path="/tree" element={<Tree />} />
