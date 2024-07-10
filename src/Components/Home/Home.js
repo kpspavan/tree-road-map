@@ -1,9 +1,10 @@
 // Home.js
-import React from "react";
+import React, { useState } from "react";
 import { Layout, Typography, Button, Row, Col, Image } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import profilePic from "../../Imag/web.png";
+import ContactForm from "../Contact/Contact"
 import "./Home.css";
 
 const { Content } = Layout;
@@ -19,9 +20,18 @@ const TransitionEffect = () => <div className="transition-effect"></div>;
 
 const Home = () => {
   const navigate = useNavigate();
+  const [isContactFormVisible, setIsContactFormVisible] = useState(false);
 
   const handleRoadMapClick = () => {
     navigate("/tree");
+  };
+
+  const showContactForm = () => {
+    setIsContactFormVisible(true);
+  };
+
+  const handleContactFormClose = () => {
+    setIsContactFormVisible(false);
   };
 
   return (
@@ -68,10 +78,22 @@ const Home = () => {
               >
                 Road Map
               </Button>
+              <Button
+                type="primary"
+                size="large"
+                onClick={showContactForm}
+                style={{ marginLeft: "10px" }}
+              >
+                Contact
+              </Button>
             </Col>
           </Row>
         </Content>
       </Layout>
+      <ContactForm
+        visible={isContactFormVisible}
+        onClose={handleContactFormClose}
+      />
     </Layout>
   );
 };

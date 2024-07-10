@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ReactFlow, {
   useNodesState,
   useEdgesState,
@@ -9,7 +9,7 @@ import ReactFlow, {
   Handle,
   MarkerType,
 } from "reactflow";
-import { Drawer, Collapse } from "antd";
+import { Drawer, Collapse, Modal } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import "reactflow/dist/style.css";
 import "./Tree.css";
@@ -606,6 +606,14 @@ const Tree = () => {
   const [drawerContent, setDrawerContent] = useState("");
   const [selectedSubtopic, setSelectedSubtopic] = useState("");
   const [selectedSubtopicDetails, setSelectedSubtopicDetails] = useState([]);
+  const [introVisible, setIntroVisible] = useState(false);
+
+  useEffect(() => {
+    if (!localStorage.getItem("introShown")) {
+      setIntroVisible(true);
+      localStorage.setItem("introShown", "true");
+    }
+  }, []);
 
   const onConnect = useCallback(
     (params) =>
@@ -698,10 +706,7 @@ const Tree = () => {
                   }}
                 >
                   {subtopic.details.map((detail, idx) => (
-                    <p
-                      key={idx}
-                      className="panel-item"
-                    >
+                    <p key={idx} className="panel-item">
                       {detail}
                     </p>
                   ))}
@@ -711,9 +716,21 @@ const Tree = () => {
           </Collapse>
         </div>
       </Drawer>
+      <Modal
+        title="Welcome to the Tree Structure"
+        visible={introVisible}
+        onOk={() => setIntroVisible(false)}
+        onCancel={() => setIntroVisible(false)}
+        okText="Got it!"
+      >
+        <p>
+          This is a tree structure. Click on a main node to change topics. You
+          can close the drawer by clicking outside of it or using the close
+          button. Clicking on a main node will open the drawer with details.
+        </p>
+      </Modal>
     </div>
   );
 };
 
 export default Tree;
-
