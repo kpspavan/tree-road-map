@@ -27,20 +27,6 @@ const nodeStyle = {
   boxShadow: "0 5px 10px rgba(0, 0, 0, 0.15)",
 };
 
-const animatedIconStyle = {
-  transition: "transform 0.3s",
-};
-
-const collapsedIconStyle = {
-  ...animatedIconStyle,
-  transform: "rotate(0deg)",
-};
-
-const expandedIconStyle = {
-  ...animatedIconStyle,
-  transform: "rotate(180deg)",
-};
-
 const initialNodes = [
   {
     id: "1",
@@ -295,11 +281,7 @@ const initialEdges = [
 ];
 
 const LeftCustomNode = ({ data, style }) => (
-  <div
-    style={style}
-    className="custom-node"
-    onClick={() => data.onClick(data.label)}
-  >
+  <div style={style} className="custom-node">
     <Handle
       type="target"
       position="left"
@@ -326,11 +308,7 @@ const LeftCustomNode = ({ data, style }) => (
 );
 
 const RightCustomNode = ({ data, style }) => (
-  <div
-    style={style}
-    className="custom-node"
-    onClick={() => data.onClick(data.label)}
-  >
+  <div style={style} className="custom-node">
     <Handle
       type="target"
       position="left"
@@ -633,14 +611,9 @@ const Tree = () => {
     setSelectedSubtopic("");
     setSelectedSubtopicDetails([]);
   };
-
   const renderExpandIcon = ({ isActive }) => (
     <span className={`animated-icon ${isActive ? "expanded" : "collapsed"}`}>
-      {isActive ? (
-        <MinusOutlined style={{ fontSize: "16px" }} />
-      ) : (
-        <PlusOutlined style={{ fontSize: "16px" }} />
-      )}
+      <PlusOutlined className="plus-icon" />
     </span>
   );
 

@@ -92,3 +92,42 @@
   opacity: 1;
   transform: translateY(0);
 }
+.animated-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.animated-icon.expanded {
+  transform: rotate(45deg);
+}
+
+.animated-icon.collapsed {
+  transform: rotate(0deg);
+}
+
+
+.animated-icon {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.plus-icon {
+  position: absolute;
+  transition: transform 0.3s;
+}
+
+.minus-icon {
+  position: absolute;
+  transition: transform 0.3s;
+  transform: rotate(90deg);
+}
+
+.expanded .plus-icon {
+  transform: rotate(45deg);
+}
+
+.collapsed .minus-icon {
+  transform: rotate(-90deg);
+}
