@@ -97,7 +97,7 @@ const topics = [
   {
     id: "8",
     subtopics: ["Internet Topic 1", "Internet Topic 2"],
-    position: { x: -300, y: 0 },
+    position: { x: -338.403, y: -14.401 },
     type: "left",
   },
   {
@@ -111,7 +111,7 @@ const topics = [
       "HTML Tables",
       "HTML Media",
     ],
-    position: { x: 500, y: 150 },
+    position: { x: 620.008, y: 36.3923 },
     type: "right",
   },
   {
@@ -122,7 +122,7 @@ const topics = [
       "CSS Properties",
       "CSS Designing",
     ],
-    position: { x: -300, y: 300 },
+    position: { x: -339.163, y: 257.432 },
     type: "left",
   },
   {
@@ -133,7 +133,7 @@ const topics = [
       "JavaScript Operators",
       "JavaScript Built-in Objects",
     ],
-    position: { x: 500, y: 450 },
+    position: { x: 623.208, y: 373.195 },
     type: "right",
   },
   {
@@ -144,7 +144,7 @@ const topics = [
       "Syncing Techniques",
       "Branching & Merging",
     ],
-    position: { x: -300, y: 600 },
+    position: { x: -344.271, y: 513.16 },
     type: "left",
   },
   {
@@ -156,7 +156,7 @@ const topics = [
       "React Hooks",
       "React State management",
     ],
-    position: { x: 500, y: 750 },
+    position: { x: 626.409, y: 661.994 },
     type: "right",
   },
   {
@@ -167,7 +167,7 @@ const topics = [
       "Next.js Data Fetching",
       "Next.js Rendering",
     ],
-    position: { x: -300, y: 900 },
+    position: { x: -347.677, y: 831.89 },
     type: "left",
   },
 ];
@@ -674,8 +674,8 @@ const Tree = () => {
         visible={drawerVisible}
         mask={false}
         maskClosable={false}
-        width={400}
-        bodyStyle={{ padding: "0" }}
+        width={600}
+        bodyStyle={{ padding: "20px", background: "#f7f7f7" }}
       >
         <div className="custom-scrollbar" style={{ height: "100%" }}>
           <Collapse
@@ -694,10 +694,14 @@ const Tree = () => {
                     marginBottom: "10px",
                     borderRadius: "5px",
                     border: "1px solid #e8e8e8",
+                    padding: "10px",
                   }}
                 >
                   {subtopic.details.map((detail, idx) => (
-                    <p key={idx} className="subtopic-item">
+                    <p
+                      key={idx}
+                      className="panel-item"
+                    >
                       {detail}
                     </p>
                   ))}
@@ -712,3 +716,4 @@ const Tree = () => {
 };
 
 export default Tree;
+
