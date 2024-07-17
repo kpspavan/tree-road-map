@@ -32,14 +32,14 @@ const App = () => {
     <Router>
       {loading && <Loader />}
       {!loading && (
-        <Layout style={{ minHeight: "100vh" }}>
-          <Layout>
+        <>
+          <>
             <Routes>
               <Route path="/tree" element={<Tree />} />
               <Route path="/" element={<Home />} />
             </Routes>
-          </Layout>
-        </Layout>
+          </>
+        </>
       )}
     </Router>
   );

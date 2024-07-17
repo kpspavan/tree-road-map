@@ -9,7 +9,7 @@ import ReactFlow, {
   Handle,
   MarkerType,
 } from "reactflow";
-import { Drawer, Collapse, Modal } from "antd";
+import { Drawer, Layout, Collapse, Modal } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import "reactflow/dist/style.css";
 import "./Tree.css";
@@ -82,8 +82,14 @@ const initialNodes = [
 const topics = [
   {
     id: "8",
-    subtopics: ["Internet Topic 1", "Internet Topic 2"],
-    position: { x: -338.403, y: -14.401 },
+    subtopics: [
+      "Internet Basics",
+      "Web Browsers",
+      "Web Browsers",
+      "Web Performance",
+      "Internet Security for Front-End",
+    ],
+    position: { x: -338.403, y: -82.517 },
     type: "left",
   },
   {
@@ -364,8 +370,45 @@ const nodeTypes = {
 const topicSubtopicsMap = {
   "Internet Fundamentals": {
     subtopics: [
-      { title: "Internet Topic 1", details: ["Detail 1", "Detail 2"] },
-      { title: "Internet Topic 2", details: ["Detail 1", "Detail 2"] },
+      {
+        title: "Internet Basics",
+        details: [
+          "Introduction to the Internet",
+          "How the Internet Works",
+          "Internet Protocols (HTTP, HTTPS)",
+          "Domain Name System (DNS)",
+        ],
+      },
+      {
+        title: "Web Browsers",
+        details: [
+          "Introduction to Web Browsers",
+          "Popular Web Browsers",
+          "How Web Browsers Work",
+          "Developer Tools",
+        ],
+      },
+      {
+        title: "Web Hosting and Servers",
+        details: [
+          "What is Web Hosting?",
+          "Types of Web Hosting",
+          "Introduction to Web Servers",
+          "Client-Server Model",
+        ],
+      },
+      {
+        title: "Web Performance",
+        details: [
+          "Page Load Time",
+          "Optimizing Assets (Images, CSS, JS)",
+          "Caching Mechanisms",
+        ],
+      },
+      {
+        title: "Internet Security for Front-End",
+        details: ["Introduction to Internet Security", "HTTPS and SSL/TLS"],
+      },
     ],
   },
   HTML: {
@@ -491,19 +534,89 @@ const topicSubtopicsMap = {
     subtopics: [
       {
         title: "JavaScript Basics",
-        details: ["Details about JavaScript Basics..."],
+        details: [
+          "Introduction to JavaScript",
+          "JavaScript Syntax",
+          "How to Add JavaScript in HTML Document?",
+          "JavaScript Comments",
+          "JavaScript Variables",
+          "Variables and Datatypes in JavaScript",
+        ],
       },
       {
         title: "JavaScript Statements",
-        details: ["Details about JavaScript Statements..."],
+        details: [
+          "JavaScript if-else",
+          "JavaScript switch Statement",
+          "JavaScript Errors Throw and Try to Catch",
+        ],
+      },
+      {
+        title: "JavaScript Loops",
+        details: [
+          "JavaScript For Loop",
+          "JavaScript for-in Loop",
+          "JavaScript for of Loop",
+        ],
       },
       {
         title: "JavaScript Operators",
-        details: ["Details about JavaScript Operators..."],
+        details: [
+          "JavaScript Arithmetic Operators",
+          "JavaScript Assignment Operators",
+          "JavaScript Comparison Operators",
+          "JavaScript Logical Operators",
+        ],
       },
       {
         title: "JavaScript Built-in Objects",
-        details: ["Details about JavaScript Built-in Objects..."],
+        details: [
+          "JavaScript Arrays",
+          "JavaScript Strings",
+          "JavaScript Numbers",
+        ],
+      },
+      {
+        title: "JavaScript Functions",
+        details: [
+          "Function Declaration",
+          "Function Expressions",
+          "Arrow Functions",
+          "IIFEs",
+          "Async functions",
+        ],
+      },
+      {
+        title: "JavaScript DOM",
+        details: [
+          "DOM Introduction",
+          "Selecting DOM Elements",
+          "Changing Content of HTML Elements",
+          "Changing Styles of HTML Elements",
+          "Event Listeners",
+          "Creating and Inserting Elements",
+          "Removing Elements",
+          "Traversing the DOM",
+        ],
+      },
+      {
+        title: "JavaScript this Keyword",
+        details: [
+          "In a method",
+          "In a function",
+          "Using it alone",
+          "In arrow functions",
+        ],
+      },
+      {
+        title: "Asynchronous JavaScript",
+        details: [
+          "Callbacks",
+          "Promises",
+          "async / await",
+          "setTimeout",
+          "setInterval",
+        ],
       },
     ],
   },
@@ -539,36 +652,142 @@ const topicSubtopicsMap = {
   },
   React: {
     subtopics: [
-      { title: "React Basics", details: ["Details about React Basics..."] },
       {
-        title: "React Class component",
-        details: ["Details about React Class component..."],
+        title: "React Basics",
+        details: [
+          "Introduction to React",
+          "Setting up a React Environment",
+          "JSX Syntax and Expressions",
+          "Components and Props",
+          "State and Lifecycle",
+          "Handling Events",
+          "Conditional Rendering",
+          "Lists and Keys",
+          "Forms in React",
+          "Lifting State Up",
+          "Composition vs Inheritance",
+        ],
       },
       {
-        title: "React Functional components",
-        details: ["Details about React Functional components..."],
+        title: "React Class Components",
+        details: [
+          "Creating a Class Component",
+          "Constructor and Super",
+          "State in Class Components",
+          "Component Lifecycle Methods",
+          "Handling Events",
+          "Conditional Rendering",
+          "Using Props in Class Components",
+          "Default Props",
+          "Setting State Correctly",
+          "Performance Optimization",
+        ],
       },
-      { title: "React Hooks", details: ["Details about React Hooks..."] },
       {
-        title: "React State management",
-        details: ["Details about React State management..."],
+        title: "React Functional Components",
+        details: [
+          "Introduction to Functional Components",
+          "Writing a Functional Component",
+          "Props in Functional Components",
+          "Using State with useState Hook",
+          "Using Effects with useEffect Hook",
+          "Context API with Functional Components",
+          "Memoization with React.memo",
+          "Handling Events",
+          "Using Refs in Functional Components",
+        ],
+      },
+      {
+        title: "React Hooks",
+        details: [
+          "Introduction to React Hooks",
+          "useState Hook",
+          "useEffect Hook",
+          "useContext Hook",
+          "useReducer Hook",
+          "useCallback Hook",
+          "useMemo Hook",
+          "useRef Hook",
+          "useImperativeHandle Hook",
+          "useLayoutEffect Hook",
+          "useDebugValue Hook",
+          "Custom Hooks",
+        ],
+      },
+      {
+        title: "React State Management",
+        details: [
+          "Introduction to State Management",
+          "Local State",
+          "Global State with Context API",
+          "State Management with Redux",
+          "State Management with MobX",
+          "Using React Query for Server State",
+          "Comparison of Different State Management Solutions",
+          "Best Practices for State Management",
+          "Handling Side Effects",
+          "Performance Optimization in State Management",
+        ],
       },
     ],
   },
+
   Nextjs: {
     subtopics: [
-      { title: "Next.js Basics", details: ["Details about Next.js Basics..."] },
+      {
+        title: "Next.js Basics",
+        details: [
+          "Introduction to Next.js",
+          "Setting up a Next.js Project",
+          "Creating Pages",
+          "Linking between Pages",
+          "Customizing the App Component",
+          "Customizing the Document",
+          "Static Assets in Next.js",
+          "Styling in Next.js (CSS, Sass, CSS-in-JS)",
+        ],
+      },
       {
         title: "Next.js Routing",
-        details: ["Details about Next.js Routing..."],
+        details: [
+          "Introduction to Next.js Routing",
+          "Dynamic Routes",
+          "Nested Routes",
+          "API Routes",
+          "Customizing the Router",
+          "Route Prefetching",
+          "Middleware in Routing",
+          "Internationalized Routing",
+        ],
       },
       {
         title: "Next.js Data Fetching",
-        details: ["Details about Next.js Data Fetching..."],
+        details: [
+          "Introduction to Data Fetching in Next.js",
+          "getStaticProps",
+          "getStaticPaths",
+          "getServerSideProps",
+          "Client-Side Data Fetching",
+          "Incremental Static Regeneration",
+          "Static Site Generation",
+          "Server-Side Rendering",
+          "Combining Static and Server-Side Rendering",
+          "API Routes for Data Fetching",
+        ],
       },
       {
         title: "Next.js Rendering",
-        details: ["Details about Next.js Rendering..."],
+        details: [
+          "Introduction to Next.js Rendering",
+          "Static Generation",
+          "Server-Side Rendering",
+          "Hybrid Rendering",
+          "Incremental Static Regeneration",
+          "Optimizing Performance",
+          "SEO Best Practices",
+          "Using Head for Metadata",
+          "Custom Error Pages",
+        ],
       },
     ],
   },
@@ -582,6 +801,7 @@ const Tree = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [drawerContent, setDrawerContent] = useState("");
+  console.log("drawerContent", drawerContent);
   const [selectedSubtopic, setSelectedSubtopic] = useState("");
   const [selectedSubtopicDetails, setSelectedSubtopicDetails] = useState([]);
   const [introVisible, setIntroVisible] = useState(false);
@@ -618,91 +838,104 @@ const Tree = () => {
   );
 
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <ReactFlow
-        nodes={nodes.map((node) => ({
-          ...node,
-          data: { ...node.data, onClick: handleNodeClick },
-        }))}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        nodeTypes={nodeTypes}
-        fitView
-        minZoom={0.2}
-        zoomOnScroll={false}
-        zoomOnPinch={false}
-        panOnScroll={true}
-        panOnScrollMode="vertical"
-        elementsSelectable={false}
-      >
-        <Background />
-      </ReactFlow>
-      <Drawer
-        title="Node Details"
-        placement="right"
-        closable={true}
-        onClose={onClose}
-        visible={drawerVisible}
-        mask={false}
-        maskClosable={false}
-        width={600}
-        bodyStyle={{ padding: "20px", background: "#f7f7f7" }}
-      >
-        <div className="custom-scrollbar" style={{ height: "100%" }}>
-          <Collapse
-            bordered={false}
-            expandIcon={renderExpandIcon}
-            expandIconPosition="right"
-            style={{ background: "#f7f7f7", borderRadius: "5px" }}
+    <Layout>
+      <>
+        <div
+          id="pavan"
+          style={{
+            height: "100vh",
+            position: "relative",
+            left: "-70px",
+
+            padding: "20px",
+          }}
+        >
+          <ReactFlow
+            nodes={nodes.map((node) => ({
+              ...node,
+              data: { ...node.data, onClick: handleNodeClick },
+            }))}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            nodeTypes={nodeTypes}
+            fitView
+            zoomOnScroll={false}
+            zoomOnPinch={false}
+            panOnScroll={false}
+            panOnScrollMode="vertical"
+            elementsSelectable={false}
           >
-            {topicSubtopicsMap[drawerContent]?.subtopics.map(
-              (subtopic, index) => (
-                <Panel
-                  header={subtopic.title}
-                  key={index}
-                  style={{
-                    background: "#fff",
-                    marginBottom: "10px",
-                    borderRadius: "5px",
-                    border: "1px solid #e8e8e8",
-                    padding: "10px",
-                  }}
-                >
-                  {subtopic.details.map((detail, idx) => (
-                    <p key={idx} className="panel-item">
-                      {detail}
-                    </p>
-                  ))}
-                </Panel>
-              )
-            )}
-          </Collapse>
+            <style>
+              {`
+            .react-flow__panel.react-flow__attribution {
+              display: none;
+            }
+          `}
+            </style>
+          </ReactFlow>
         </div>
-      </Drawer>
-      <Modal
-        title="Welcome to the Tree Structure"
-        visible={introVisible}
-        onOk={() => setIntroVisible(false)}
-        onCancel={() => setIntroVisible(false)}
-        okText="Got it!"
-      >
-        <p>
-          This is a tree structure. Click on a main node to change topics. You
-          can close the drawer by clicking outside of it or using the close
-          button. Clicking on a main node will open the drawer with details.
-        </p>
-      </Modal>
-    </div>
+
+        <Modal
+          title="Welcome to the Tree Structure"
+          visible={introVisible}
+          onOk={() => setIntroVisible(false)}
+          onCancel={() => setIntroVisible(false)}
+          okText="Got it!"
+        >
+          <p>
+            This is a tree structure. Click on a main node to change topics. You
+            can close the drawer by clicking outside of it or using the close
+            button. Clicking on a main node will open the drawer with details.
+          </p>
+        </Modal>
+      </>
+      <div>
+        <Drawer
+          title={drawerContent}
+          placement="right"
+          closable={true}
+          onClose={onClose}
+          visible={drawerVisible}
+          mask={false}
+          maskClosable={false}
+          width={600}
+          bodyStyle={{ padding: "20px", background: "#f7f7f7" }}
+        >
+          <div className="custom-scrollbar" style={{ height: "100%" }}>
+            <Collapse
+              bordered={false}
+              expandIcon={renderExpandIcon}
+              expandIconPosition="right"
+              style={{ background: "#f7f7f7", borderRadius: "5px" }}
+            >
+              {topicSubtopicsMap[drawerContent]?.subtopics.map(
+                (subtopic, index) => (
+                  <Panel
+                    header={subtopic.title}
+                    key={index}
+                    style={{
+                      background: "#fff",
+                      marginBottom: "10px",
+                      borderRadius: "5px",
+                      border: "1px solid #e8e8e8",
+                      padding: "10px",
+                    }}
+                  >
+                    {subtopic.details.map((detail, idx) => (
+                      <p key={idx} className="panel-item">
+                        {detail}
+                      </p>
+                    ))}
+                  </Panel>
+                )
+              )}
+            </Collapse>
+          </div>
+        </Drawer>
+      </div>
+    </Layout>
   );
 };
 

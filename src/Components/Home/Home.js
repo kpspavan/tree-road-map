@@ -4,7 +4,7 @@ import { Layout, Typography, Button, Row, Col, Image } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import profilePic from "../../Imag/web.png";
-import ContactForm from "../Contact/Contact"
+import ContactForm from "../Contact/Contact";
 import "./Home.css";
 
 const { Content } = Layout;
@@ -84,7 +84,7 @@ const Home = () => {
                 onClick={showContactForm}
                 style={{ marginLeft: "10px" }}
               >
-                Contact
+                Contact Me
               </Button>
             </Col>
           </Row>

@@ -51,7 +51,7 @@ const ContactForm = ({ visible, onClose }) => {
   };
 
   return (
-    <CSSTransition in={visible} timeout={300} classNames="modal" unmountOnExit>
+    <CSSTransition in={visible} classNames="modal" unmountOnExit>
       <Modal
         title="Contact Form"
         visible={visible}
@@ -66,16 +66,7 @@ const ContactForm = ({ visible, onClose }) => {
           </Button>,
         ]}
       >
-        <Form
-          form={form}
-          layout="vertical"
-          name="contact_form"
-          className={
-            animate
-              ? "animate__animated animate__bounceIn animate__fadeOut"
-              : ""
-          }
-        >
+        <Form form={form} layout="vertical" name="contact_form">
           <Form.Item
             name="name"
             label="Enter your Name"
