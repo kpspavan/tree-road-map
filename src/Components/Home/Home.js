@@ -1,7 +1,5 @@
-// Home.js
-import React, { useState } from "react";
-import { Layout, Typography, Button, Row, Col, Image } from "antd";
-import { DownloadOutlined } from "@ant-design/icons";
+import React, { useState, useEffect } from "react";
+import { Layout, Typography, Row, Col, Image } from "antd";
 import { useNavigate } from "react-router-dom";
 import profilePic from "../../Imag/web.png";
 import ContactForm from "../Contact/Contact";
@@ -21,6 +19,13 @@ const TransitionEffect = () => <div className="transition-effect"></div>;
 const Home = () => {
   const navigate = useNavigate();
   const [isContactFormVisible, setIsContactFormVisible] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsBannerVisible(true);
+    }, 500);
+  }, []);
 
   const handleRoadMapClick = () => {
     navigate("/tree");
@@ -36,6 +41,12 @@ const Home = () => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
+      <div className={`red-banner ${isBannerVisible ? "fade-in" : ""}`}>
+        <div className="moving-line"></div>
+        <Typography.Title level={2} style={{ color: "white", margin: 0 }}>
+          Limited Seats! Only 20 people for this class.
+        </Typography.Title>
+      </div>
       <Layout>
         <Content
           style={{
@@ -70,22 +81,22 @@ const Home = () => {
                 innovative web applications. Explore my latest projects,
                 showcasing my expertise in Front End.
               </Paragraph>
-              <Button
-                type="primary"
-                icon={<DownloadOutlined />}
-                size="large"
-                onClick={handleRoadMapClick}
-              >
-                Road Map
-              </Button>
-              <Button
-                type="primary"
-                size="large"
+              <button className="learn-more" onClick={handleRoadMapClick}>
+                <span className="circle" aria-hidden="true">
+                  <span className="icon arrow"></span>
+                </span>
+                <span className="button-text">Road Map</span>
+              </button>
+              <button
+                className="learn-more"
                 onClick={showContactForm}
                 style={{ marginLeft: "10px" }}
               >
-                Contact Me
-              </Button>
+                <span className="circle" aria-hidden="true">
+                  <span className="icon arrow"></span>
+                </span>
+                <span className="button-text">Contact Me</span>
+              </button>
             </Col>
           </Row>
         </Content>

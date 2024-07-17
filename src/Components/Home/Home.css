@@ -1,0 +1,141 @@
+.red-banner {
+  background-color: #ff4d4f;
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1000;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  animation: glow 1.5s infinite alternate;
+}
+
+.red-banner h2 {
+  color: white;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.transition-effect {
+  /* Add any additional transition effects you need here */
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+  }
+}
+
+:root {
+  --bg: #f3f8fa;
+  --white: #fff;
+  --black: #282936;
+  --transition-duration: 0.45s;
+  --transition-timing-function: cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+button.learn-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 12rem;
+  height: auto;
+  border: 2px solid var(--black); /* Add border */
+  border-radius: 50px; /* Ensure the button maintains its shape */
+  overflow: hidden;
+  background-color: var(--white); /* Add background color */
+}
+
+button.learn-more .circle {
+  transition: var(--transition-duration) var(--transition-timing-function);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: var(--black);
+  border-radius: 50%;
+}
+
+button.learn-more .circle .icon {
+  transition: var(--transition-duration) var(--transition-timing-function);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: var(--white);
+}
+
+button.learn-more .circle .icon.arrow {
+  transition: var(--transition-duration) var(--transition-timing-function);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.25rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid var(--white);
+  border-right: 0.125rem solid var(--white);
+  transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+  transition: var(--transition-duration) var(--transition-timing-function);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 4rem; /* Adjust margin to align text properly */
+  color: var(--black);
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: left; /* Align text to the left */
+  text-transform: uppercase;
+}
+
+button.learn-more:hover .circle {
+  width: 100%;
+  border-radius: 0%; /* Change border-radius to 25% on hover */
+}
+
+button.learn-more:hover .circle .icon.arrow {
+  background: var(--white);
+  transform: translate(1rem, 0);
+}
+
+button.learn-more:hover .button-text {
+  color: var(--white);
+}
