@@ -23,9 +23,7 @@
   opacity: 1;
 }
 
-.transition-effect {
-  /* Add any additional transition effects you need here */
-}
+
 
 @keyframes glow {
   from {
@@ -64,10 +62,10 @@ button.learn-more {
   justify-content: flex-start;
   width: 12rem;
   height: auto;
-  border: 2px solid var(--black); /* Add border */
-  border-radius: 50px; /* Ensure the button maintains its shape */
+  border: 2px solid var(--black);
+  border-radius: 50px; 
   overflow: hidden;
-  background-color: var(--white); /* Add background color */
+  background-color: var(--white); 
 }
 
 button.learn-more .circle {
@@ -118,17 +116,17 @@ button.learn-more .button-text {
   right: 0;
   bottom: 0;
   padding: 0.75rem 0;
-  margin: 0 0 0 4rem; /* Adjust margin to align text properly */
+  margin: 0 0 0 4rem; 
   color: var(--black);
   font-weight: 700;
   line-height: 1.6;
-  text-align: left; /* Align text to the left */
+  text-align: left; 
   text-transform: uppercase;
 }
 
 button.learn-more:hover .circle {
   width: 100%;
-  border-radius: 0%; /* Change border-radius to 25% on hover */
+  border-radius: 0%; 
 }
 
 button.learn-more:hover .circle .icon.arrow {
